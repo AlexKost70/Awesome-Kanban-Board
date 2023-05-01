@@ -1,0 +1,33 @@
+.user-menu {
+    width: 134px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 60px;
+    right: 9px;
+    border-radius: 5px;
+    flex-direction: column;
+    display: flex;
+}
+
+.user-menu::before {
+    display: block;
+    position: absolute;
+    top: -6px;
+    left: 77px;
+    content: "";
+    width: 11px;
+    height: 11px;
+    background-color: #FFFFFF;
+    transform: rotate(45deg);
+}
+
+.user-menu a {
+    margin-left: 7px;
+    margin-top: 8px;
+    text-decoration: none;
+    color: #000;
+}
+
+.user-menu a:last-of-type {
+    margin-bottom: 8px;
+}

@@ -1,0 +1,22 @@
+footer {
+    background-color: #0067A3;
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0 19px 0 21px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
+
+footer .status {
+    display: flex;
+}
+
+footer .status .active {
+    margin-right: 36px;
+}
