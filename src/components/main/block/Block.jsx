@@ -1,38 +1,107 @@
 import React from "react";
 import "./Block.css";
 import plus from "./plus.svg";
+import BlockDescription from "./blockDescription/BlockDescription";
 
 export default class Block extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isVisibleAddButton: true,
+            isVisibleSubmitButton: false,
+            isVisibleSelect: false,
+            textInput: "",
+            selectValue: "none"
+        };
+    };
+
     render() {
-        const {title, issues} = this.props;
+        const {title, id, issues, prevIssues, addCard} = this.props;
 
-        const AddBacklog = () => {
-            return <input type="text" name="" id="" />
+        const isBlank = str => {
+            return (!str || /^\s*$/.test(str));
         }
 
-        const AddAnother = () => {
-            return <input type="button" name="" id="" />
-        }
-
-        const handleClick = (e) => {
-            e.preventDefault();
-            if (e.target.parentNode.previousElementSibling.textContent == "Backlog") {
-                console.log(1);
+        const showInput = id => {
+            if (id == 0) {
+                this.setState({
+                    isVisibleAddButton: false,
+                    isVisibleSubmitButton: true
+                });
             } else {
-                console.log(e.target.parentNode.previousElementSibling);
+                if (!prevIssues.length == 0) {
+                    this.setState({
+                        isVisibleAddButton: false,
+                        isVisibleSubmitButton: true,
+                        isVisibleSelect: true
+                    });
+                }
             }
         }
+
+        const handleTextInput = event => {
+            this.setState({textInput: event.target.value});
+        }
+
+        const handleSelect = event => {
+            this.setState({selectValue: event.target.value});
+        }
+
+        const handleSubmit = event => {
+            event.preventDefault();
+            if (id == 0) {
+                if (!isBlank(this.state.textInput)) {
+                    addCard(this.state.textInput, "Sample Description");
+                }
+                this.setState({
+                    textInput: ""
+                });
+            } else {
+                if(this.state.selectValue != "none") {
+                    addCard(id, this.state.selectValue);
+                    this.setState({
+                        selectValue: "none"
+                    });
+                }
+            }
+            this.setState({
+                isVisibleAddButton: true,
+                isVisibleSubmitButton: false,
+                isVisibleSelect: false
+            });
+        }
+
         return(
-            <div className="block" id="title">
+            <div className="block">
                 <h2>{title}</h2>
                 <div className="wrapper">
                     {issues.map(issue => (
                         <p className="content-card" id={issue.id}>{issue.name}</p>
                     ))}
-                    <a href="#" className="add" onClick={(e) => handleClick(e)}>
-                        <img src={plus} alt="Plus Icon" />
-                        Add Card
-                    </a>
+                    {this.state.isVisibleAddButton && 
+                        <a href="#" className={`add-button ${id !== 0 && prevIssues.length === 0 ? "disabled" : ""}`} onClick={() => showInput(id)}>
+                            <img src={plus} alt="Plus Icon" />
+                            Add Card
+                        </a>
+                    }
+                    {!this.state.isVisibleAddButton && id == 0 &&
+                        <div className="add-issue">
+                            <input type="text" className="add-issue" onChange={(e) => handleTextInput(e)} />
+                        </div>
+                    }
+
+                    {this.state.isVisibleSelect && 
+                        <select name="issues" className="move-issue" onChange={(e) => handleSelect(e)}>
+                            <option value="none"></option>
+                            {prevIssues.map(issue => (
+                                <option value={issue.id}>{issue.name}</option>
+                            ))}
+                        </select>
+                    }
+
+                    {this.state.isVisibleSubmitButton &&
+                        <input type="submit" value="Submit" className="submit" onClick={(e) => handleSubmit(e)} />
+                    }
                 </div>
             </div>
         );

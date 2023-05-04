@@ -41,18 +41,108 @@
     margin-bottom: 15px;
     border-radius: 5px;
     padding: 7px 8px;
+    word-break: break-all;
 }
 
 .block .content-card:last-of-type {
     margin-bottom: 17px;
 }
 
-.block .add {
+.block .add-button {
     display: inline-block;
     text-decoration: none;
     color: #5E6C84;
+    padding: 4px 6px 2px 6px;
 }
 
-.block .add img {
+.block .add-button:hover {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.block .add-button.disabled {
+    color: #8b8b8b;
+}
+
+.block .add-button.disabled:hover {
+    background-color: #EBECF0;
+    cursor: default;
+}
+
+.block .add-button img {
     margin-right: 4px;
 }
+
+.block .add-issue {
+    background: #FFFFFF;
+    border-radius: 5px;
+    height: 35px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.block .add-issue input {
+    margin: 2px 8px 0 8px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    border-radius: 0;
+    width: 234px;
+    height: 28px;
+    outline: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    padding-bottom: 0;
+}
+
+.block .add-issue input:focus {
+    border: none;
+}
+
+.block .move-issue {
+    display: block;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border-color: #FFFFFF;
+    width: 258px;
+    height: 35px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    cursor: pointer;
+    appearance: none;
+    padding: 6px 7px;
+    outline: none;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACiSURBVHgBpZIBDcIwEEUfDibhHICESpkDcDCcMJQgAQkLCrDAXdaFpena7vaSnzRteu2/fwCiGjjOEGvRqd6qG34uqmkpSFx8VQEfVqxPN0MsKuzDrD62Ds222e9oQ0is5hhLLyZkraa0hnRVvWhEKIe0nAs7CIVL1pI7DnIh9cy9czPyD0mopHqijv3Omv9UnVUfnHbXCHM/J9pntEqgYeZ+IXUfmJklgEEAAAAASUVORK5CYII=');
+    background-repeat: no-repeat;
+    background-position-x: 229px;
+    background-position-y: 50%;
+}
+
+.block .move-issue option {
+}
+
+.block .submit {
+    width: 102px;
+    height: 29px;
+    background: #0079BF;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.block .submit:hover {
+    color: #EBECF0;
+    cursor: pointer;
+}
+

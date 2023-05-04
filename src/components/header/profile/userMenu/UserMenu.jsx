@@ -21,7 +21,7 @@ export default class UserMenu extends React.Component {
         }
         return(
             <React.Fragment>
-                <a href="#" className="menu-button" onClick={(e) => handleClick(e)}>
+                <a href="#" className={"menu-button" + (this.state.isOpened ? " opened" : "")} onClick={(e) => handleClick(e)}>
                     <img src={arrow} alt="Open User's Menu" />
                 </a>
                 {this.state.isOpened && <div className="user-menu">

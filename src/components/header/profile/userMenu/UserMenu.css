@@ -1,3 +1,11 @@
+.menu-button { 
+    transition: transform 0.3s; 
+}
+
+.menu-button.opened { 
+    transform: rotate(180deg); 
+}
+
 .user-menu {
     width: 134px;
     background-color: #FFFFFF;

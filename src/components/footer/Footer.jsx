@@ -6,8 +6,8 @@ export default class Footer extends React.Component {
         return(
             <footer>
                 <div className="status">
-                    <p className="active">Active tasks: 0</p>
-                    <p className="finish">Finished tasks: 0</p>
+                    <p className="active">Active tasks: {this.props.activeTasks}</p>
+                    <p className="finish">Finished tasks: {this.props.finishedTasks}</p>
                 </div>
                 <p className="copyright">Kanban board by Alexander Kostrikin, 2023</p>
             </footer>
