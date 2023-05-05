@@ -1,7 +1,7 @@
 import React from "react";
 import "./Block.css";
 import plus from "./plus.svg";
-import BlockDescription from "./blockDescription/BlockDescription";
+import { Link } from "react-router-dom";
 
 export default class Block extends React.Component {
     constructor(props) {
@@ -76,7 +76,7 @@ export default class Block extends React.Component {
                 <h2>{title}</h2>
                 <div className="wrapper">
                     {issues.map(issue => (
-                        <p className="content-card" id={issue.id}>{issue.name}</p>
+                        <Link to={`/tasks/${issue.id}`} state={{ id:issue.id, blockId: id, name: issue.name, description: issue.description }} className="content-card">{issue.name}</Link>
                     ))}
                     {this.state.isVisibleAddButton && 
                         <a href="#" className={`add-button ${id !== 0 && prevIssues.length === 0 ? "disabled" : ""}`} onClick={() => showInput(id)}>

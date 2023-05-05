@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import "./BlockDescription.css"
+import { Link, useLocation } from "react-router-dom";
 
-export default class BlockDescription extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
+export default function BlockDescription(props) {
+    const [description, setDescription] = useState(useLocation().state.description);
 
-        };
+    const blocks = {
+        0: "backlog",
+        1: "ready",
+        2: "progress",
+        3: "finished",
     };
 
-    render() {
-        return(
+    const blockId = useLocation().state.blockId;
+    const id = useLocation().state.id;
+
+    const handleInput = (event) => {
+        setDescription(event.target.textContent);
+        props.updateDescription(blockId, id, event.target.textContent);
+        let issue = JSON.parse(localStorage.getItem(blocks[blockId]));
+        console.log(issue);
+    }
+
+    return(
+        <main className="desc-page">
             <div className="desc">
                 <div className="desc-header">
-                    <h2></h2>
-                    <a href="#" className="close"></a>
+                    <h2>{useLocation().state.name}</h2>
+                    <Link to="/" className="close"></Link>
                 </div>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <p contenteditable="true" onBlur={handleInput}>{description}</p>
             </div>
-        )
-    }
+        </main>
+    );
 }
