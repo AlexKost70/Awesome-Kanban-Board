@@ -79,12 +79,7 @@ export default class Block extends React.Component {
                     {issues.map(issue => (
                         <Link to={`/tasks/${issue.id}`} state={{ id: issue.id, blockId: id, name: issue.name, description: issue.description }} className="content-card">{issue.name}</Link>
                     ))}
-                    {/* {this.state.isVisibleAddButton && 
-                        <a href="#" className={`add-button ${id !== 0 && prevIssues.length === 0 ? "disabled" : ""}`} onClick={(event) => showInput(id, event)}>
-                            <img src={plus} alt="Plus Icon" />
-                            Add Card
-                        </a>
-                    } */}
+
                     {this.state.isVisibleAddButton && 
                         <button className="add-button" disabled={id !== 0 && prevIssues.length === 0} onClick={(event) => showInput(id, event)}>
                             <img src={plus} alt="Plus Icon" />

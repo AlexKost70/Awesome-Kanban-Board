@@ -37,8 +37,7 @@ export default class Main extends React.Component {
                 name: name, 
                 description: "This task has no description"
             });
-            this.setState({ dataMock: newDataMock });
-            localStorage.setItem("data", JSON.stringify(newDataMock));
+            updateData(newDataMock);
         }
 
         const moveIssue = (blockId, issueId) => {
@@ -47,10 +46,15 @@ export default class Main extends React.Component {
                 if (issue.id == issueId) {
                     newDataMock[blockId].issues.push(issue);
                     newDataMock[blockId-1].issues.splice(index, 1);
-                    this.setState({ dataMock: newDataMock });
-                    localStorage.setItem("data", JSON.stringify(newDataMock));
+                    updateData(newDataMock);
                 }
             });  
+        }
+
+        const updateData = (newData) => {
+            this.setState({ dataMock: newData });
+            localStorage.setItem("data", JSON.stringify(newData));
+            this.props.updateCounter();
         }
 
         return(

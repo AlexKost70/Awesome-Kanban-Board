@@ -16,3 +16,17 @@ header h1 {
     line-height: 33px;
     color: #FFFFFF;
 }
+
+@media (max-width: 430px) {
+    header {
+        padding-top: 10px;
+        justify-content: flex-end;
+        height: 80px;
+        align-items: flex-start;
+        background-color: #0079BF;
+    }
+
+    header h1 {
+        display: none;
+    }
+}
