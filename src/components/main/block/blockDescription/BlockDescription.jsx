@@ -4,22 +4,22 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function BlockDescription(props) {
     const [description, setDescription] = useState(useLocation().state.description);
-
-    const blocks = {
-        0: "backlog",
-        1: "ready",
-        2: "progress",
-        3: "finished",
-    };
-
-    const blockId = useLocation().state.blockId;
     const id = useLocation().state.id;
+    const blockId = useLocation().state.blockId;
+    let issues = (JSON.parse(localStorage.getItem("data")))[blockId].issues;
+    let issueIndex;
+
+    issues.forEach((issue, index) => {
+        if (issue.id == id) {
+            issueIndex = index;
+        }
+    });
 
     const handleInput = (event) => {
         setDescription(event.target.textContent);
-        props.updateDescription(blockId, id, event.target.textContent);
-        let issue = JSON.parse(localStorage.getItem(blocks[blockId]));
-        console.log(issue);
+        let data = JSON.parse(localStorage.getItem("data"));
+        data[blockId].issues[issueIndex].description = event.target.textContent;
+        localStorage.setItem("data", JSON.stringify(data));
     }
 
     return(
@@ -29,7 +29,7 @@ export default function BlockDescription(props) {
                     <h2>{useLocation().state.name}</h2>
                     <Link to="/" className="close"></Link>
                 </div>
-                <p contenteditable="true" onBlur={handleInput}>{description}</p>
+                <p contentEditable="true" onBlur={handleInput}>{description}</p>
             </div>
         </main>
     );

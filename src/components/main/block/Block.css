@@ -53,24 +53,33 @@
 }
 
 .block .add-button {
-    display: inline-block;
-    text-decoration: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 102px;
+    height: 29px;
+    font-size: 18px;
+    line-height: 21px;
     color: #5E6C84;
-    padding: 4px 6px 2px 6px;
+    padding-top: 3px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    background-color: #EBECF0;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    font-family: 'Roboto', sans-serif;
 }
 
 .block .add-button:hover {
-    background-color: #FFFFFF;
-    border-radius: 5px;
+    background: #FFFFFF;
 }
 
-.block .add-button.disabled {
-    color: #8b8b8b;
-}
-
-.block .add-button.disabled:hover {
-    background-color: #EBECF0;
+.block .add-button[disabled] {
     cursor: default;
+    background: none;
+    color: #a8a8a8;
 }
 
 .block .add-button img {
@@ -93,7 +102,7 @@
     width: 234px;
     height: 28px;
     outline: none;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
