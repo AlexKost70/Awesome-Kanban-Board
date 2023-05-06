@@ -35,6 +35,11 @@
     margin-top: 8px;
     text-decoration: none;
     color: #000;
+    transition: color 100ms ease-in-out;
+}
+
+.user-menu a:hover {
+    color: #5E6C84;
 }
 
 .user-menu a:last-of-type {
