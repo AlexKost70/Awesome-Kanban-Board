@@ -10,8 +10,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTasks: JSON.parse(localStorage.getItem("data"))[0].issues.length,
-      finishedTasks: JSON.parse(localStorage.getItem("data"))[3].issues.length
+      activeTasks: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data"))[0].issues.length : 0,
+      finishedTasks: localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data"))[3].issues.length : 0
     }
   }
 
